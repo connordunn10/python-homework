@@ -49,3 +49,14 @@ with open("budget_data.csv") as f:
     print("Average Change: $" + str(rev_avg))
     print("Greatest Increase in Profits:", greatest_inc_display[0], "$", str(greatest_inc_display[1]))
     print("Greatest Decrease in Profits:", greatest_dec_display[0], "$", str(greatest_dec_display[1]))
+    
+    
+    
+    
+    
+Financial Analysis
+Total Months: 86
+Total: $38382578
+Average Change: $-2315.1176470588234
+Greatest Increase in Profits: Feb-2012 $ 1926159
+Greatest Decrease in Profits: Feb-2012 $ -2196167
