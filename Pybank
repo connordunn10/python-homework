@@ -1,1 +1,51 @@
+import os, csv
 
+total_months = []
+total_profits = []
+rev_change = []
+
+#Open CSV
+with open("budget_data.csv") as f:
+    #read file data, delimit by comma
+    reader = csv.reader(f, delimiter = ',')
+    #skip header
+    next(reader)
+    #iterate through rows
+    for line in reader:
+        #add month to list
+        total_months.append(line[0])
+        #add profit to list
+        total_profits.append(int(line[1]))
+    
+    for x in range(1, len(total_profits)):
+        #subtract
+        rev_change.append((int(total_profits[x]) - int(total_profits[x-1])))
+        
+    # total number of noths
+    num_months = len(total_months)
+    
+    # net total profit/loss
+    net_total = sum(total_profits)
+    
+    #avg change in revenue
+    rev_avg = sum(rev_change) / len(rev_change)
+        
+    #get largest increase
+    max_increase = max(rev_change)
+    max_decrease = min(rev_change)
+    
+    #get greatest increase for a month's profits   
+    index =  rev_change.index(max_increase)
+    greatest_inc_display = (total_months[index+1]), max_increase
+    
+    #get greatest decrease for a month's profits
+    decrease_index =  rev_change.index(max_decrease)
+    greatest_dec_display = (total_months[index+1]), max_decrease
+    
+    
+    print("Financial Analysis") 
+    print("Total Months:", num_months)
+    print("Total:", "$" + str(net_total))
+    print("Average Change: $" + str(rev_avg))
+    print("Greatest Increase in Profits:", greatest_inc_display[0], "$", str(greatest_inc_display[1]))
+    print("Greatest Decrease in Profits:", greatest_dec_display[0], "$", str(greatest_dec_display[1]))
